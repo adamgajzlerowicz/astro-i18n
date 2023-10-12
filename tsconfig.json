@@ -1,0 +1,25 @@
+{
+  "extends": "astro/tsconfigs/strictest",
+  "include": [
+    "./astro.config.ts",
+    "./src/**/*.astro",
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ],
+  "compilerOptions": {
+    "allowUmdGlobalAccess": true,
+    "baseUrl": "src",
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
+    ],
+    "paths": {
+      "@components/*": [
+        "src/components/*"
+      ]
+    },
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js"
+  }
+}

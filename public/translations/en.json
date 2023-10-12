@@ -1,0 +1,25 @@
+{
+  "navigation": {
+    "app": "Application",
+    "agility": "Agility",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "download": "Download"
+  },
+  "agility": {
+    "pageTitle": "Agility"
+  },
+  "about": {
+      "pageTitle": "About"
+  },
+  "contact": {
+      "pageTitle": "Contact"
+  },
+  "application": {
+    "pageTitle": "Application"
+  },
+  "login": {
+    "pageTitle": "Login"
+  }
+}

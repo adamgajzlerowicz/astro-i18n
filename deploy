@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Fetch the latest tag for the image from local Docker
+latest_tag=$(docker images --format "{{.Repository}}:{{.Tag}}" | grep eu.gcr.io/agilix-same-szybkie-przebiegi/container/home | sort -V | tail -n 1 | awk -F ':' '{print $2}')
+
+# If no tags are found, initialize the latest_tag to 0
+if [ -z "$latest_tag" ]; then
+  latest_tag=0
+fi
+
+# Increment the latest tag value
+next_tag=$((latest_tag + 1))
+
+# Build the Docker image with the next tag
+docker build . --platform linux/amd64 -t eu.gcr.io/agilix-same-szybkie-przebiegi/container/home:$next_tag
+
+# Push
+docker push eu.gcr.io/agilix-same-szybkie-przebiegi/container/home:$next_tag
+
+# Deploy the new image to Google Cloud Run
+gcloud run deploy agilix-home --image eu.gcr.io/agilix-same-szybkie-przebiegi/container/home:$next_tag --region europe-west1 --platform managed
+
+# Output the version that has been deployed
+echo "Deployed version: $next_tag"
