@@ -20,6 +20,7 @@ export const i18n = createI18n(locale, {
     }
     return fetchJson.get(`/translations/${code}.json`)
   },
+  baseLocale: 'pl'
 })
 
 export const navigation = i18n('navigation', {
